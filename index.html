@@ -6,16 +6,16 @@
 <link rel="icon" type="image/png" href="assets/bandejita.png">
 <link rel="apple-touch-icon" href="assets/bandejita.png">
 <title>Bandejitaapaisaa | Artista gráfico</title>
-<meta name="description" content="Descubre el trabajo de Matthew, conocido como Bandejitaapaisaa: modelos 3D, animaciones e ilustraciones creadas con creatividad y estilo propio.">
+<meta name="description" content="Descubre el trabajo de Matthew, conocido como Bandejitaapaisaa: modelos 3D, renders e ilustraciones creadas con creatividad y estilo propio.">
 <link rel="canonical" href="https://zansumilmc.github.io/Bandejita/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Bandejitaapaisaa | Artista gráfico">
-<meta property="og:description" content="Descubre el trabajo de Matthew, conocido como Bandejitaapaisaa: modelos 3D, animaciones e ilustraciones.">
+<meta property="og:description" content="Descubre el trabajo de Matthew, conocido como Bandejitaapaisaa: modelos 3D, renders e ilustraciones.">
 <meta property="og:url" content="https://zansumilmc.github.io/Bandejita/">
 <!-- Sin banner por ahora. Cuando exista, añadir: og:image y twitter:image con https://zansumilmc.github.io/Bandejita/og/banner-1200x630.png y cambiar twitter:card a summary_large_image -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bandejitaapaisaa | Artista gráfico">
-<meta name="twitter:description" content="Modelos 3D, animaciones e ilustraciones de Matthew.">
+<meta name="twitter:description" content="Modelos 3D, renders e ilustraciones de Matthew.">
 
 <style>
 :root{--bg:#080D18;--bg2:#0D1526;--card:#111D33;--ac:#4C8DFF;--ac2:#77B7FF;--tx:#F3F6FC;--tx2:#A4B0C4;--bd:#23324B;--r:16px;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -37,12 +37,12 @@ nav a{display:block;padding:9px 13px;border-radius:99px;color:var(--tx2);font-si
 nav a:hover{color:var(--tx);background:#ffffff0d}
 nav a[aria-current=page]{color:var(--tx);background:#4C8DFF26;box-shadow:inset 0 0 0 1px #4C8DFF66}
 .burger{display:none;min-height:44px;min-width:44px;background:none;border:1px solid var(--bd);border-radius:12px}
-@media(max-width:860px){.burger{display:block}nav{position:absolute;left:0;right:0;top:100%;background:var(--bg2);border-bottom:1px solid var(--bd);display:none;padding:10px 22px}nav.open{display:block}nav ul{flex-direction:column}nav a{padding:13px}}
+@media(max-width:1020px){.burger{display:block}nav{position:absolute;left:0;right:0;top:100%;background:var(--bg2);border-bottom:1px solid var(--bd);display:none;padding:10px 22px}nav.open{display:block}nav ul{flex-direction:column}nav a{padding:13px}}
 main{min-height:70vh;padding:48px 0 24px;animation:in .5s ease both}
 @keyframes in{from{opacity:0;transform:translateY(14px)}}
 .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:30px 0 50px}
 @media(max-width:860px){.hero{grid-template-columns:1fr}}
-h1{font-size:clamp(2.3rem,7vw,4.4rem);line-height:1.05;letter-spacing:-.035em;margin:.2em 0;background:linear-gradient(120deg,#fff,var(--ac2) 60%,var(--ac));-webkit-background-clip:text;background-clip:text;color:transparent;overflow-wrap:anywhere}
+h1{font-size:clamp(2.3rem,7vw,4.4rem);line-height:1.2;padding:.05em .04em .14em 0;letter-spacing:-.035em;margin:.1em 0;background:linear-gradient(120deg,#fff,var(--ac2) 60%,var(--ac));-webkit-background-clip:text;background-clip:text;color:transparent;overflow-wrap:anywhere}
 h2{font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.03em;margin:0 0 .3em}
 .kicker{color:var(--ac2);font-size:.85rem;letter-spacing:.08em;text-transform:uppercase}
 .lead{color:var(--tx2);max-width:60ch}
@@ -122,6 +122,10 @@ footer{position:relative}footer:before{top:-1px;bottom:auto;animation-duration:9
 .hero .im{position:relative;width:100%;height:100%;overflow:hidden;border-radius:24px;border:3px solid var(--bg);background:var(--bg2);z-index:1}
 .hero .im img{position:relative;display:block;width:100%;height:100%;object-fit:contain}
 .hero .im img.bl{position:absolute;inset:-10%;width:120%;height:120%;object-fit:cover;filter:blur(24px) brightness(.55)}
+.soon{cursor:default}.soon:hover{transform:none}
+.soon .im{display:grid;place-items:center;background:linear-gradient(135deg,#16294b,#0b1426)}
+.soon .play{opacity:.55}
+.badge{position:absolute;left:12px;bottom:12px;font-size:.75rem;font-weight:600;padding:5px 12px;border-radius:99px;background:#080D18cc;border:1px solid #4C8DFF66;color:var(--ac2);box-shadow:0 0 14px #4C8DFF44;animation:pls 3.5s ease-in-out infinite}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -154,11 +158,11 @@ const MODELS=[
  {id:"m2",title:"",description:"Modelo 3D",category:"",image:"modelo3d2.png",thumbnail:"",alt:"Modelo 3D 2",type:"image",w:3,h:4},
  {id:"m3",title:"",description:"Modelo 3D",category:"",image:"modelo3d3.png",thumbnail:"",alt:"Modelo 3D 3",type:"image",w:1,h:1},
  {id:"m4",title:"",description:"Modelo 3D",category:"",image:"modelo3d4.png",thumbnail:"",alt:"Modelo 3D 4",type:"image",w:1,h:1}];
-const ANIMS=[
- {id:"a1",title:"",description:"Animación 3D",category:"",image:"animacion1.png",thumbnail:"",alt:"Animación 3D 1",type:"image",w:16,h:9},
- {id:"a2",title:"",description:"Animación 3D",category:"",image:"animacion2.png",thumbnail:"",alt:"Animación 3D 2",type:"image",w:16,h:9},
- {id:"a3",title:"",description:"Animación 3D",category:"",image:"animacion3.png",thumbnail:"",alt:"Animación 3D 3",type:"image",w:16,h:9},
- {id:"a4",title:"",description:"Animación 3D",category:"",image:"animacion4.png",thumbnail:"",alt:"Animación 3D 4",type:"image",w:16,h:9}];
+const RENDERS=[
+ {id:"a1",title:"",description:"Render",category:"",image:"animacion1.png",thumbnail:"",alt:"Render 1",type:"image",w:16,h:9},
+ {id:"a2",title:"",description:"Render",category:"",image:"animacion2.png",thumbnail:"",alt:"Render 2",type:"image",w:16,h:9},
+ {id:"a3",title:"",description:"Render",category:"",image:"animacion3.png",thumbnail:"",alt:"Render 3",type:"image",w:16,h:9},
+ {id:"a4",title:"",description:"Render",category:"",image:"animacion4.png",thumbnail:"",alt:"Render 4",type:"image",w:16,h:9}];
 const ILUS=[
  {id:"i1",title:"",description:"Ilustración",category:"",image:"ilustracion1.png",thumbnail:"",alt:"Ilustración 1",type:"image",w:16,h:9},
  {id:"i2",title:"",description:"Ilustración",category:"",image:"ilustracion2.png",thumbnail:"",alt:"Ilustración 2",type:"image",w:18,h:5},
@@ -168,6 +172,7 @@ const PAGES=[
  {r:"/",n:"Inicio",t:"Bandejitaapaisaa | Artista gráfico"},
  {r:"/sobre-mi",n:"Sobre mí",t:"Sobre mí | Bandejitaapaisaa"},
  {r:"/modelos-3d",n:"Modelos 3D",t:"Modelos 3D | Bandejitaapaisaa"},
+ {r:"/renders",n:"Renders",t:"Renders | Bandejitaapaisaa"},
  {r:"/animaciones-3d",n:"Animaciones 3D",t:"Animaciones 3D | Bandejitaapaisaa"},
  {r:"/ilustraciones",n:"Ilustraciones",t:"Ilustraciones | Bandejitaapaisaa"},
  {r:"/contacto",n:"Contacto",t:"Contacto | Bandejitaapaisaa"}];
@@ -188,15 +193,16 @@ const note='';
 /* ===== PÁGINAS ===== */
 const heroP={id:"h",alt:"Espacio para render destacado de portada",w:4,h:3};
 const views={
-"/":()=>`<section class="hero"><div><span class="kicker">Artista digital · Modelado 3D · Animación · Ilustración</span><h1>Bandejitaapaisaa</h1><p class="lead">Transformando ideas en experiencias visuales a través del 3D, la animación y la ilustración.</p><p class="kicker" style="margin:14px 0 0;color:var(--tx2)">Modelador 3D · Artista gráfico · Animador en aprendizaje</p><div class="btns"><a class="btn p" href="#/modelos-3d">Explorar portafolio</a><a class="btn" href="#/sobre-mi">Conocer al artista</a></div></div><div class="frame avatar"><div class="im">${media([...MODELS,...ILUS,...ANIMS][Math.floor(Math.random()*(MODELS.length+ILUS.length+ANIMS.length))],1)}</div></div></section>
-<section><div class="grid">${[["/modelos-3d","Modelos 3D","Volúmenes, formas y detalle tridimensional.",MODELS[0]],["/animaciones-3d","Animaciones 3D","Movimiento, composición e iluminación.",ANIMS[0]],["/ilustraciones","Ilustraciones","Ideas y composiciones visuales.",ILUS[1]]].map(c=>`<a class="card" href="#${c[0]}"><div class="im">${media(c[3],1)}</div><div class="tx"><h3>${c[1]}</h3><p>${c[2]}</p><span class="more">Explorar →</span></div></a>`).join("")}</div>${note}</section>`,
+"/":()=>`<section class="hero"><div><span class="kicker">Artista digital · Modelado 3D · Animación · Ilustración</span><h1>Bandejitaapaisaa</h1><p class="lead">Transformando ideas en experiencias visuales a través del 3D, la animación y la ilustración.</p><p class="kicker" style="margin:14px 0 0;color:var(--tx2)">Modelador 3D · Artista gráfico · Animador en aprendizaje</p><div class="btns"><a class="btn p" href="#/modelos-3d">Explorar portafolio</a><a class="btn" href="#/sobre-mi">Conocer al artista</a></div></div><div class="frame avatar"><div class="im">${media([...MODELS,...ILUS,...RENDERS][Math.floor(Math.random()*(MODELS.length+ILUS.length+RENDERS.length))],1)}</div></div></section>
+<section><div class="grid">${[["/modelos-3d","Modelos 3D","Volúmenes, formas y detalle tridimensional.",MODELS[0]],["/renders","Renders","Iluminación, materiales y composición.",RENDERS[0]],["/ilustraciones","Ilustraciones","Ideas y composiciones visuales.",ILUS[1]]].map(c=>`<a class="card" href="#${c[0]}"><div class="im">${media(c[3],1)}</div><div class="tx"><h3>${c[1]}</h3><p>${c[2]}</p><span class="more">Explorar →</span></div></a>`).join("")}</div>${note}</section>`,
 "/sobre-mi":()=>`<div class="about"><div class="frame avatar" style="aspect-ratio:1"><img src="assets/bandejita.png" alt="Matthew, conocido como Bandejitaapaisaa" width="600" height="600" decoding="async"></div><div><span class="kicker">Bandejitaapaisaa</span><h2>Sobre mí</h2><p class="lead">¡Hola! Soy Matthew, mejor conocido como Bandejitaapaisaa.</p><p class="lead">Me especializo en la creación de modelos 3D, animaciones 3D e ilustraciones, siempre buscando darle mi propio estilo y creatividad a cada proyecto.</p><p class="lead">Actualmente estoy explorando y aprendiendo más sobre los renders en Blender, experimentando con iluminación, materiales, escenarios y diferentes técnicas para mejorar cada vez más mis trabajos.</p><p class="lead">Este portafolio es una recopilación de algunos de mis proyectos y trabajos, donde podrás conocer un poco más sobre lo que hago y cómo ha ido evolucionando mi estilo.</p><div class="pills"><div class="pill"><b>Modelado</b><small>Hago modelos 3D</small></div><div class="pill"><b>Animación</b><small>Animador en aprendizaje</small></div><div class="pill"><b>Ilustración</b><small>Artista gráfico</small></div></div></div></div>${next(1)}`,
 "/modelos-3d":()=>head("Galería","Modelos 3D","Explora una selección de modelos tridimensionales, experimentos visuales y proyectos desarrollados con creatividad, detalle y dedicación.")+`<div class="grid">${MODELS.map(cardHTML).join("")}</div>${note}${next(2)}`,
-"/animaciones-3d":()=>head("Galería","Animaciones 3D","Movimiento, composición e iluminación se unen para dar vida a ideas y crear experiencias visuales.")+`<div class="grid">${ANIMS.map(cardHTML).join("")}</div>${note}${next(3)}`,
-"/ilustraciones":()=>head("Galería","Ilustraciones","Una colección de ideas, composiciones y piezas visuales que reflejan mi creatividad y evolución artística.")+`<div class="mas">${ILUS.map(cardHTML).join("")}</div>${note}${next(4)}`,
-"/contacto":()=>`<span class="kicker">Contacto</span><h2>¿Creamos algo increíble?</h2><p class="lead">¿Tienes una idea, un proyecto o simplemente te gusta mi trabajo? Me encantaría conocer lo que tienes en mente. Siempre estoy abierto a nuevas ideas, colaboraciones y oportunidades para seguir creando.</p><p class="lead" style="color:var(--tx)">Hablemos y hagamos realidad nuevas ideas.</p>`+next(5)
+"/renders":()=>head("Galería","Renders","Iluminación, materiales y composición se unen para dar vida a ideas y crear experiencias visuales.")+`<div class="grid">${RENDERS.map(cardHTML).join("")}</div>${note}${next(3)}`,
+"/animaciones-3d":()=>head("Próximamente","Animaciones 3D","Movimiento, composición e iluminación se unen para dar vida a ideas y crear experiencias visuales.")+`<div class="grid">${[1,2,3].map(()=>`<div class="card soon" role="group" aria-label="Animación próximamente"><div class="im"><div class="play"><span aria-hidden="true">▶</span></div><b class="badge">Próximamente</b></div><div class="tx"><span class="tag">Animación 3D</span><p>Próximamente</p></div></div>`).join("")}</div>${next(4)}`,
+"/ilustraciones":()=>head("Galería","Ilustraciones","Una colección de ideas, composiciones y piezas visuales que reflejan mi creatividad y evolución artística.")+`<div class="mas">${ILUS.map(cardHTML).join("")}</div>${note}${next(5)}`,
+"/contacto":()=>`<span class="kicker">Contacto</span><h2>¿Creamos algo increíble?</h2><p class="lead">¿Tienes una idea, un proyecto o simplemente te gusta mi trabajo? Me encantaría conocer lo que tienes en mente. Siempre estoy abierto a nuevas ideas, colaboraciones y oportunidades para seguir creando.</p><p class="lead" style="color:var(--tx)">Hablemos y hagamos realidad nuevas ideas.</p>`+next(6)
 };
-const lists={"/modelos-3d":MODELS,"/animaciones-3d":ANIMS,"/ilustraciones":ILUS};
+const lists={"/modelos-3d":MODELS,"/renders":RENDERS,"/ilustraciones":ILUS};
 /* ===== ROUTER ===== */
 function route(){let r=location.hash.replace(/^#/,"")||"/";if(!views[r])r="/";
  const i=PAGES.findIndex(p=>p.r===r);document.body.classList.toggle("ct",r==="/contacto");document.title=PAGES[i].t;
@@ -225,7 +231,7 @@ document.addEventListener("keydown",e=>{if(!$("#lb").classList.contains("on"))re
 $("#bg").onclick=()=>{const o=$("#nv").classList.toggle("open");$("#bg").setAttribute("aria-expanded",o)};
 $("#xl").href=SOCIAL_LINKS.x;
 $("#dc").onclick=async()=>{const b=$("#dc"),t="Discord: "+SOCIAL_LINKS.discord;try{await navigator.clipboard.writeText(SOCIAL_LINKS.discord);b.textContent="¡Usuario copiado!"}catch(e){b.textContent=SOCIAL_LINKS.discord}setTimeout(()=>b.textContent=t,2200)};
-$("#cp").textContent=`© ${new Date().getFullYear()} Bandejitaapaisaa. Todos los derechos reservados al creador de la obra y del contenido publicado.`;
+$("#cp").textContent=`© ${new Date().getFullYear()} Bandejitaapaisaa. Todos los derechos reservados.`;
 route();
 </script>
 </body>
