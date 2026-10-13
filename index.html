@@ -289,7 +289,7 @@ $("#lb").onclick=e=>{if(e.target.id==="lb")close()};
 document.addEventListener("keydown",e=>{if(!$("#lb").classList.contains("on"))return;if(e.key==="Escape")close();if(e.key==="ArrowLeft")go(-1);if(e.key==="ArrowRight")go(1)});
 /* ===== INICIO ===== */
 /* ===== MÚSICA (click to enter) ===== */
-const MUSIC=encodeURI("assets/Radiohead - Creep.mp3"),VOLUME=0.3;
+const MUSIC=encodeURI("assets/Radiohead - Creep.mp3"),VOLUME=0.1;
 const song=new Audio(MUSIC);song.loop=true;song.volume=VOLUME;song.preload="auto";
 document.body.style.overflow="hidden";$("#ge").focus();
 $("#ge").onclick=()=>{song.play().catch(()=>{});$("#gate").classList.add("out");document.body.style.overflow=""};
