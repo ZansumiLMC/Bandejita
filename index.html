@@ -134,12 +134,6 @@ footer{position:relative}footer:before{top:-1px;bottom:auto;animation-duration:9
 .ct-hero .lead{font-size:clamp(1.15rem,2.6vw,1.45rem);line-height:1.6;max-width:42ch;margin:0 auto 1em;color:var(--tx2)}
 .ct-hero .big{font-size:clamp(1.5rem,4vw,2.3rem);font-weight:800;letter-spacing:-.02em;line-height:1.25;max-width:none;margin-top:1.2em;background:linear-gradient(120deg,#fff,var(--ac2) 60%,var(--ac));-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.1em}
 .sec{margin-top:80px}
-.gate{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:radial-gradient(45% 45% at 50% 40%,#4C8DFF30,transparent),var(--bg);transition:opacity .7s ease,visibility .7s}
-.gate.out{opacity:0;visibility:hidden;pointer-events:none}
-.gate-in{display:flex;flex-direction:column;align-items:center;gap:30px;padding:24px;text-align:center}
-.gate-t{font-size:clamp(2.2rem,8vw,4.4rem);font-weight:800;letter-spacing:-.035em;line-height:1.15}
-.gate-t b{color:var(--ac2);text-shadow:0 0 22px #4C8DFF99}
-.gate-b{min-height:54px;padding:0 38px;font-size:1.1rem}
 .tbtn{display:inline-flex;align-items:center;margin-top:14px;min-height:40px;padding:0 18px;border-radius:99px;border:1px solid #4C8DFF66;background:#4C8DFF1a;color:var(--ac2);font-size:.9rem;font-weight:600;transition:.25s}
 .tbtn:hover{border-color:var(--ac2);background:#4C8DFF33;transform:translateY(-2px);box-shadow:0 8px 24px #4C8DFF33}
 .card{scroll-margin-top:100px}
@@ -163,6 +157,12 @@ footer{position:relative}footer:before{top:-1px;bottom:auto;animation-duration:9
 .tcard h3{margin:0 0 8px;font-size:1.15rem;color:var(--ac2)}
 .tcard p{margin:0;color:var(--tx2);font-size:.97rem;line-height:1.6}
 @media(max-width:520px){.tcard{flex-direction:column;text-align:center;gap:14px}}
+.gate{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:radial-gradient(45% 45% at 50% 40%,#4C8DFF30,transparent),var(--bg);transition:opacity .7s ease,visibility .7s}
+.gate.out{opacity:0;visibility:hidden;pointer-events:none}
+.gate-in{display:flex;flex-direction:column;align-items:center;gap:30px;padding:24px;text-align:center}
+.gate-t{font-size:clamp(2.2rem,8vw,4.4rem);font-weight:800;letter-spacing:-.035em;line-height:1.15}
+.gate-t b{color:var(--ac2);text-shadow:0 0 22px #4C8DFF99}
+.gate-b{min-height:54px;padding:0 38px;font-size:1.1rem}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -197,15 +197,15 @@ const MODELS=[
  {id:"m3",title:"",description:"Modelo 3D",category:"",image:"modelo3d3.png",thumbnail:"",alt:"Modelo 3D 3",type:"image",w:1,h:1},
  {id:"m4",title:"",description:"Modelo 3D",category:"",image:"modelo3d4.png",thumbnail:"",alt:"Modelo 3D 4",type:"image",w:1,h:1}];
 const RENDERS=[
- {id:"a1",title:"",description:"Render",category:"",image:"animacion1.png",thumbnail:"",alt:"Render 1",type:"image",w:16,h:9},
- {id:"a2",title:"Para Cr4z1k1ll3r",description:"Render",category:"",image:"animacion2.png",thumbnail:"",alt:"Render 2",type:"image",w:16,h:9},
- {id:"a3",title:"",description:"Render",category:"",image:"animacion3.png",thumbnail:"",alt:"Render 3",type:"image",w:16,h:9},
- {id:"a4",title:"",description:"Render",category:"",image:"animacion4.png",thumbnail:"",alt:"Render 4",type:"image",w:16,h:9}];
+ {id:"a1",title:"",description:"Render",category:"",image:"render1.png",thumbnail:"",alt:"Render 1",type:"image",w:16,h:9},
+ {id:"a2",title:"Para Cr4z1k1ll3r",description:"Render",category:"",image:"render2.png",thumbnail:"",alt:"",type:"image",w:16,h:9},
+ {id:"a3",title:"",description:"Render",category:"",image:"render3.png",thumbnail:"",alt:"Render 3",type:"image",w:16,h:9},
+ {id:"a4",title:"",description:"Render",category:"",image:"render4.png",thumbnail:"",alt:"Render 4",type:"image",w:16,h:9}];
 const ILUS=[
- {id:"i1",title:"Para Axort_35",description:"Ilustración",category:"",image:"ilustracion1.png",thumbnail:"",alt:"Ilustración 1",type:"image",w:16,h:9},
+ {id:"i1",title:"Para Axort_35",description:"Ilustración",category:"",image:"ilustracion1.png",thumbnail:"",alt:"",type:"image",w:16,h:9},
  {id:"i2",title:"",description:"Ilustración",category:"",image:"ilustracion2.png",thumbnail:"",alt:"Ilustración 2",type:"image",w:18,h:5},
  {id:"i3",title:"",description:"Ilustración",category:"",image:"ilustracion3.png",thumbnail:"",alt:"Ilustración 3",type:"image",w:1,h:1},
- {id:"i4",title:"Para ElMarcoPlays",description:"Ilustración",category:"",image:"ilustracion4.png",thumbnail:"",alt:"Ilustración 4",type:"image",w:16,h:9}];
+ {id:"i4",title:"Para ElMarcoPlays",description:"Ilustración",category:"",image:"ilustracion4.png",thumbnail:"",alt:"",type:"image",w:16,h:9}];
 const PAGES=[
  {r:"/",n:"Inicio",t:"Bandejitaapaisaa | Artista gráfico"},
  {r:"/sobre-mi",n:"Sobre mí",t:"Sobre mí | Bandejitaapaisaa"},
@@ -236,7 +236,7 @@ const STUDIOS=[
  {name:"Fox Club",image:"fox-club.png"}];
 /* Comentarios de personas (foto de perfil en assets/) */
 const REVIEWS=[
- {name:"Axort_35",image:"axort_35.png",work:"i1",text:"Trabajo rápido y preciso. Muy contento de los resultados de este. Muy recomendable."},
+ {name:"Axort_35",image:"axor.png",work:"i1",text:"Trabajo rápido y preciso. Muy contento de los resultados de este. Muy recomendable."},
  {name:"ElMarcoPlays",image:"elmarcoplays.png",work:"i4",text:"Gran trabajo, te sientes parte del proceso en todo momento, además de hacer las correcciones necesarias, captó perfectamente la idea que quería plasmar."},
  {name:"Cr4z1k1ll3r",image:"cr4z1k1ll3r.png",work:"a2",text:"Está bastante buena la verdad, me gusta cómo contrasta todo con el fondo y cómo resalta la skin. Capaz lo que mejoraría un poco es el tema de las paredes ya que para mi estaban bastantes lisas y se ve medio raro. Pero en general es lo que pedí y me gustó el resultado."},
  {name:"Mira productions",image:"mira-productions.png",text:"Es increíble, es de los mejores animadores de la comunidad, actualmente es un poco pequeño pero en unos años será el quintuple o sextuple de mejor de lo que es ahorita!"}];
@@ -289,7 +289,7 @@ $("#lb").onclick=e=>{if(e.target.id==="lb")close()};
 document.addEventListener("keydown",e=>{if(!$("#lb").classList.contains("on"))return;if(e.key==="Escape")close();if(e.key==="ArrowLeft")go(-1);if(e.key==="ArrowRight")go(1)});
 /* ===== INICIO ===== */
 /* ===== MÚSICA (click to enter) ===== */
-const MUSIC="assets/Radiohead - Creep.mp3",VOLUME=0.4;
+const MUSIC=encodeURI("assets/Radiohead - Creep.mp3"),VOLUME=0.3;
 const song=new Audio(MUSIC);song.loop=true;song.volume=VOLUME;song.preload="auto";
 document.body.style.overflow="hidden";$("#ge").focus();
 $("#ge").onclick=()=>{song.play().catch(()=>{});$("#gate").classList.add("out");document.body.style.overflow=""};
