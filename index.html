@@ -163,6 +163,14 @@ footer{position:relative}footer:before{top:-1px;bottom:auto;animation-duration:9
 .gate-t{font-size:clamp(2.2rem,8vw,4.4rem);font-weight:800;letter-spacing:-.035em;line-height:1.15}
 .gate-t b{color:var(--ac2);text-shadow:0 0 22px #4C8DFF99}
 .gate-b{min-height:54px;padding:0 38px;font-size:1.1rem}
+/* ===== BOTÓN MUTE ===== */
+.mute{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;width:48px;height:48px;border-radius:50%;border:1px solid #4C8DFF66;background:#111D33e6;backdrop-filter:blur(8px);display:grid;place-items:center;padding:0;color:var(--ac2);transition:.25s;box-shadow:0 6px 20px #0008}
+.mute:hover{border-color:var(--ac2);transform:translateY(-2px);box-shadow:0 8px 24px #4C8DFF44}
+.mute svg{width:22px;height:22px;display:block}
+.mute .off{display:none}
+.mute.is-muted{color:var(--tx2);border-color:var(--bd)}
+.mute.is-muted .on{display:none}
+.mute.is-muted .off{display:block}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -181,6 +189,7 @@ footer{position:relative}footer:before{top:-1px;bottom:auto;animation-duration:9
 <div class="credit">Página realizada por <a href="https://zansumilmc.github.io/ZANSUMI/" target="_blank" rel="noopener noreferrer">ᴸᴹᶜ | Zansumi</a></div>
 <p class="rights" id="cp"></p>
 </div></footer>
+<button class="mute" id="mt" type="button" aria-label="Silenciar música" aria-pressed="false" title="Silenciar música"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="on"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></g><g class="off"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></g></svg></button>
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Vista ampliada">
 <button class="ib x" id="lx" aria-label="Cerrar">✕</button>
 <button class="ib l" id="lp" aria-label="Anterior">‹</button>
@@ -293,6 +302,7 @@ const MUSIC=encodeURI("assets/Radiohead - Creep.mp3"),VOLUME=0.1;
 const song=new Audio(MUSIC);song.loop=true;song.volume=VOLUME;song.preload="auto";
 document.body.style.overflow="hidden";$("#ge").focus();
 $("#ge").onclick=()=>{song.play().catch(()=>{});$("#gate").classList.add("out");document.body.style.overflow=""};
+$("#mt").onclick=()=>{song.muted=!song.muted;const m=song.muted,b=$("#mt");b.classList.toggle("is-muted",m);b.setAttribute("aria-pressed",m);const t=m?"Activar sonido":"Silenciar música";b.setAttribute("aria-label",t);b.title=t};
 $("#bg").onclick=()=>{const o=$("#nv").classList.toggle("open");$("#bg").setAttribute("aria-expanded",o)};
 $("#xl").href=SOCIAL_LINKS.x;
 $("#dc").onclick=async()=>{const b=$("#dc"),t="Discord: "+SOCIAL_LINKS.discord;try{await navigator.clipboard.writeText(SOCIAL_LINKS.discord);b.textContent="¡Usuario copiado!"}catch(e){b.textContent=SOCIAL_LINKS.discord}setTimeout(()=>b.textContent=t,2200)};
