@@ -1,0 +1,1 @@
+Coloca aqui tu skin como skin.png (64x64, mismo UV que el modelo).
