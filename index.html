@@ -210,6 +210,17 @@ footer{position:relative}footer:before{top:-1px;bottom:auto;animation-duration:9
 .v3d-speed output{color:var(--ac2);font-variant-numeric:tabular-nums}
 .v3d-speed input{grid-column:1/-1;width:100%;accent-color:var(--ac);min-height:28px;margin:0}
 .v3d-panel .note{margin:0}
+/* ===== PREVIEW ANIMACIONES 3D (inicio, tarjeta) ===== */
+.grid.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:960px){.grid.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.grid.g4{grid-template-columns:minmax(0,1fr)}}
+.pv3 .im{background:radial-gradient(65% 55% at 50% 38%,#1c3566 0%,#0e1b36 55%,#0a1224 100%)}
+.pv3 .v3d{position:absolute;inset:0;display:block;margin:0;pointer-events:none}
+.pv3 .v3d-stage{position:relative;min-height:0;max-height:none;height:100%;aspect-ratio:auto;border:0;border-radius:0;box-shadow:none;background:none}
+.pv3 .v3d-panel,.pv3 .v3d-hint{display:none}
+.pv3 .v3d-now{left:10px;top:10px;padding:5px 10px;font-size:.75rem}
+.pv3-l{position:absolute;inset:0;z-index:5}
+.pv3 .tx{display:block}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -298,7 +309,7 @@ const note='';
 const heroP={id:"h",alt:"Espacio para render destacado de portada",w:4,h:3};
 const views={
 "/":()=>`<section class="hero"><div><span class="kicker">Artista digital · Modelado 3D · Animación · Ilustración</span><h1>Bandejitaapaisaa</h1><p class="lead">Transformando ideas en experiencias visuales a través del 3D, la animación y la ilustración.</p><p class="kicker" style="margin:14px 0 0;color:var(--tx2)">Modelador 3D · Artista gráfico · Animador en aprendizaje</p><div class="btns"><a class="btn p" href="#/modelos-3d">Explorar portafolio</a><a class="btn" href="#/sobre-mi">Conocer al artista</a></div></div><div class="frame avatar"><div class="im">${media([...MODELS,...ILUS,...RENDERS][Math.floor(Math.random()*(MODELS.length+ILUS.length+RENDERS.length))],1)}</div></div></section>
-<section><div class="grid">${[["/modelos-3d","Modelos 3D","Volúmenes, formas y detalle tridimensional.",MODELS[0]],["/renders","Renders","Iluminación, materiales y composición.",RENDERS[0]],["/ilustraciones","Ilustraciones","Ideas y composiciones visuales.",ILUS[1]]].map(c=>`<a class="card" href="#${c[0]}"><div class="im">${media(c[3],1)}</div><div class="tx"><h3>${c[1]}</h3><p>${c[2]}</p><span class="more">Explorar →</span></div></a>`).join("")}</div>${note}</section>`,
+<section><div class="grid g4">${[["/modelos-3d","Modelos 3D","Volúmenes, formas y detalle tridimensional.",MODELS[0]],["/renders","Renders","Iluminación, materiales y composición.",RENDERS[0]],["/ilustraciones","Ilustraciones","Ideas y composiciones visuales.",ILUS[1]]].map(c=>`<a class="card" href="#${c[0]}"><div class="im">${media(c[3],1)}</div><div class="tx"><h3>${c[1]}</h3><p>${c[2]}</p><span class="more">Explorar →</span></div></a>`).join("")}<div class="card pv3"><div class="im"><div class="v3d" id="pv3d"></div><a class="pv3-l" href="#/animaciones-3d" aria-label="Ver animaciones 3D"></a></div><a class="tx" href="#/animaciones-3d"><h3>Animaciones 3D</h3><p>Caminar, correr y más.</p><span class="more">Explorar →</span></a></div></div>${note}</section>`,
 "/sobre-mi":()=>`<div class="about"><div class="frame avatar" style="aspect-ratio:1"><img src="assets/bandejita.png" alt="Matthew, conocido como Bandejitaapaisaa" width="600" height="600" decoding="async"></div><div><span class="kicker">Bandejitaapaisaa</span><h2>Sobre mí</h2><p class="lead">¡Hola! Soy Matthew, mejor conocido como Bandejitaapaisaa.</p><p class="lead">Me especializo en la creación de modelos 3D, animaciones 3D e ilustraciones, siempre buscando darle mi propio estilo y creatividad a cada proyecto.</p><p class="lead">Actualmente estoy explorando y aprendiendo más sobre los renders en Blender, experimentando con iluminación, materiales, escenarios y diferentes técnicas para mejorar cada vez más mis trabajos.</p><p class="lead">Este portafolio es una recopilación de algunos de mis proyectos y trabajos, donde podrás conocer un poco más sobre lo que hago y cómo ha ido evolucionando mi estilo.</p><div class="pills"><div class="pill"><b>Modelado</b><small>Hago modelos 3D</small></div><div class="pill"><b>Animación</b><small>Animador en aprendizaje</small></div><div class="pill"><b>Ilustración</b><small>Artista gráfico</small></div></div></div></div>${next(1)}`,
 "/modelos-3d":()=>head("Galería","Modelos 3D","Explora una selección de modelos tridimensionales, experimentos visuales y proyectos desarrollados con creatividad, detalle y dedicación.")+`<div class="grid">${MODELS.map(cardHTML).join("")}</div>${note}${next(2)}`,
 "/renders":()=>head("Galería","Renders","Iluminación, materiales y composición se unen para dar vida a ideas y crear experiencias visuales.")+`<div class="grid">${RENDERS.map(cardHTML).join("")}</div>${note}${next(3)}`,
@@ -310,7 +321,7 @@ const views={
 };
 const lists={"/modelos-3d":MODELS,"/renders":RENDERS,"/ilustraciones":ILUS};
 /* ===== ROUTER ===== */
-function route(){const h=(location.hash.replace(/^#/,"")||"/").split("?");if(window.Anim3D)window.Anim3D.destroy();let r=h[0]||"/";const hl=new URLSearchParams(h[1]||"").get("w");if(!views[r])r="/";
+function route(){clearInterval(pvT);const h=(location.hash.replace(/^#/,"")||"/").split("?");if(window.Anim3D)window.Anim3D.destroy();let r=h[0]||"/";const hl=new URLSearchParams(h[1]||"").get("w");if(!views[r])r="/";
  const fb=$("#fb"),cr=$("footer .credit");cr.parentNode.insertBefore(fb,cr);
  const i=PAGES.findIndex(p=>p.r===r);document.body.classList.toggle("ct",r==="/contacto");document.title=PAGES[i].t;
  $("#app").innerHTML=views[r]();
@@ -319,17 +330,29 @@ function route(){const h=(location.hash.replace(/^#/,"")||"/").split("?");if(win
  $("#nl").innerHTML=PAGES.map(p=>`<li><a href="#${p.r}" ${p.r===r?'aria-current="page"':""}>${p.n}</a></li>`).join("");
  $("#nv").classList.remove("open");$("#bg").setAttribute("aria-expanded","false");
  window.scrollTo(0,0);
- if(r==="/animaciones-3d")mountViewer();
+ if(r==="/animaciones-3d")mountViewer();if(r==="/")previewViewer();
  const L=lists[r];
  if(L)document.querySelectorAll(".card[data-i]").forEach(b=>b.onclick=()=>open(L,+b.dataset.i,b));
  if(hl){const c=document.querySelector('.card[data-id="'+hl+'"]');if(c){c.classList.add("hl");requestAnimationFrame(()=>c.scrollIntoView({block:"center",behavior:"smooth"}));setTimeout(()=>c.classList.remove("hl"),7000)}}}
 /* ===== VISOR 3D (se carga solo al abrir «Animaciones 3D») ===== */
-function mountViewer(){const root=$("#v3d");if(!root)return;
+function mountViewer(root){root=root||$("#v3d");if(!root)return;
  const run=()=>window.Anim3D&&window.Anim3D.mount(root);
  if(window.Anim3D)return run();
  const s=document.createElement("script");s.src="js/animaciones3d.js";s.onload=run;
  s.onerror=()=>{root.innerHTML='<p class="note">No se pudo cargar el visor 3D (js/animaciones3d.js). Comprueba que el archivo existe en esa ruta.</p>'};
  document.head.appendChild(s)}
+let pvT=null;
+function previewViewer(){const r=$("#pv3d");if(!r)return;
+ const start=()=>{let last=-1;clearInterval(pvT);
+  const tick=()=>{if(!document.contains(r)){clearInterval(pvT);return}
+   const it=[...r.querySelectorAll(".v3d-it:not(:disabled)")];if(!it.length)return;
+   let i;do{i=Math.floor(Math.random()*it.length)}while(it.length>1&&i===last);last=i;it[i].click();
+   setTimeout(()=>{const now=r.querySelector(".v3d-now"),pb=r.querySelector(".v3d-b.p");if(pb&&now&&!now.classList.contains("on"))pb.click()},450)};
+  const wait=setInterval(()=>{if(!document.contains(r)){clearInterval(wait);return}
+   if(r.querySelector(".v3d-it:not(:disabled)")){clearInterval(wait);tick();pvT=setInterval(tick,6000)}},700)};
+ const go=()=>{mountViewer(r);start()};
+ if(!("IntersectionObserver" in window))return go();
+ const io=new IntersectionObserver(e=>{if(e.some(x=>x.isIntersecting)){io.disconnect();go()}},{rootMargin:"200px"});io.observe(r)}
 window.addEventListener("hashchange",route);
 /* ===== LIGHTBOX / VIDEO ===== */
 let cur=[],ix=0,opener=null;
